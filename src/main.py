@@ -3,20 +3,21 @@ from Application import Application
 from EventHandler import *
 from Renderer import *
 from numpy import array
-
+from math import sin,cos
+from Animator import Animator
 SCR_HEIGHT = 600
 SCR_WIDTH  = 1200
 BG_COLOR   = 'white'
 
 cubeVerticies = array([
-                                   [1, 1, -1],
-                                   [1, -1, -1],
-                                   [-1, -1, -1],
-                                   [-1, 1, -1],
-                                   [1, 1, 1],
-                                   [1, -1, 1],
-                                   [-1, -1, 1],
-                                   [-1, 1, 1]
+                                   [0.25, 0.25, -0.25],
+                                   [0.25, -0.25, -0.25],
+                                   [-0.25, -0.25, -0.25],
+                                   [-0.25, 0.25, -0.25],
+                                   [0.25, 0.25, 0.25],
+                                   [0.25, -0.25, 0.25],
+                                   [-0.25, -0.25, 0.25],
+                                   [-0.25, 0.25, 0.25]
 ])
 
 cubeEdges = array([
@@ -40,10 +41,30 @@ CoordsVertices = array([           [0, 0, 0],
                                    [0, 6, 0],
                                    [0, 0, 6],
 ])
+
 CoordsEdges =  array([           [0, 1],
                                  [0, 2],
                                  [0, 3]
 ])
+
+def cubeAmimation1(obj,ttime):
+    time = ttime * 2
+    x = 1*sin(time)
+    y = 1*cos(time)
+    obj.translate([x,y,0])
+
+def cubeAmimation2(obj,ttime):
+    time = ttime
+    y = 2*sin(time)
+    z = 2*cos(time)
+    obj.translate([0,y,z])
+
+def cubeAmimation3(obj,ttime):
+    time = ttime / 2
+    x = 3*sin(time)
+    z = 3*cos(time)
+    obj.translate([x,0,z])
+
 
 def main():
     app = Application(SCR_HEIGHT,SCR_WIDTH)
@@ -51,10 +72,19 @@ def main():
     renderer = Renderer(camera,app.getCanvas(),app.getWidth(),app.getHeight())
     myobj = GraphicsObject(cubeVerticies,cubeEdges,[0,0,0])
     myobj2 = GraphicsObject(CoordsVertices,CoordsEdges,[0,0,0])
+    myobj3 = GraphicsObject(cubeVerticies, cubeEdges, [0, 0, 0])
+    myobj4 = GraphicsObject(cubeVerticies, cubeEdges, [0, 0, 0])
+
     myobj.translate([-1,-1,-1])
+    animator = Animator()
+    animator.registerObject(myobj,cubeAmimation1)
+    animator.registerObject(myobj3,cubeAmimation2)
+    animator.registerObject(myobj4,cubeAmimation3)
     renderer.registerObject(myobj)
     renderer.registerObject(myobj2)
-    eventHandler = EventHandler(camera,renderer)
+    renderer.registerObject(myobj3)
+    renderer.registerObject(myobj4)
+    eventHandler = EventHandler(camera,renderer,animator)
     app.setEventHandler(eventHandler)
     app.bindEvent("<Key>",app.eventHandler.keyEvent)
     app.mainloop()

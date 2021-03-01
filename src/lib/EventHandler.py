@@ -1,7 +1,8 @@
 class EventHandler:
-    def __init__(self, camera, renderer):
+    def __init__(self, camera, renderer, animator):
         self.camera = camera
         self.renderer = renderer
+        self.animator = animator
     def keyEvent(self, event):
         if event.char == 'a':
             self.camera.move([-0.1, 0, 0])
@@ -25,4 +26,5 @@ class EventHandler:
             self.renderer.changeProjection()
             self.renderer.update()
     def update(self):
+        self.animator.update()
         self.renderer.update()
