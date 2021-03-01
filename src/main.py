@@ -10,14 +10,14 @@ SCR_WIDTH  = 1200
 BG_COLOR   = 'white'
 
 cubeVerticies = array([
-                                   [0.25, 0.25, -0.25],
-                                   [0.25, -0.25, -0.25],
-                                   [-0.25, -0.25, -0.25],
-                                   [-0.25, 0.25, -0.25],
-                                   [0.25, 0.25, 0.25],
-                                   [0.25, -0.25, 0.25],
-                                   [-0.25, -0.25, 0.25],
-                                   [-0.25, 0.25, 0.25]
+                                   [1, 1, -1],
+                                   [1, -1, -1],
+                                   [-1, -1, -1],
+                                   [-1, 1, -1],
+                                   [1, 1, 1],
+                                   [1, -1, 1],
+                                   [-1, -1, 1],
+                                   [-1, 1, 1]
 ])
 
 cubeEdges = array([
@@ -72,18 +72,11 @@ def main():
     renderer = Renderer(camera,app.getCanvas(),app.getWidth(),app.getHeight())
     myobj = GraphicsObject(cubeVerticies,cubeEdges,[0,0,0])
     myobj2 = GraphicsObject(CoordsVertices,CoordsEdges,[0,0,0])
-    myobj3 = GraphicsObject(cubeVerticies, cubeEdges, [0, 0, 0])
-    myobj4 = GraphicsObject(cubeVerticies, cubeEdges, [0, 0, 0])
 
     myobj.translate([-1,-1,-1])
     animator = Animator()
-    animator.registerObject(myobj,cubeAmimation1)
-    animator.registerObject(myobj3,cubeAmimation2)
-    animator.registerObject(myobj4,cubeAmimation3)
     renderer.registerObject(myobj)
     renderer.registerObject(myobj2)
-    renderer.registerObject(myobj3)
-    renderer.registerObject(myobj4)
     eventHandler = EventHandler(camera,renderer,animator)
     app.setEventHandler(eventHandler)
     app.bindEvent("<Key>",app.eventHandler.keyEvent)
