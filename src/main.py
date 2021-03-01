@@ -76,7 +76,7 @@ def main():
     myobj.translate([-1,-1,-1])
     animator = Animator()
     renderer.registerObject(myobj)
-    renderer.registerObject(myobj2)
+    #renderer.registerObject(myobj2)
     eventHandler = EventHandler(camera,renderer,animator)
     app.setEventHandler(eventHandler)
     app.bindEvent("<Key>",app.eventHandler.keyEvent)
