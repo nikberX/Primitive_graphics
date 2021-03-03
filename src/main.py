@@ -5,19 +5,29 @@ from Renderer import *
 from numpy import array
 from math import sin,cos
 from Animator import Animator
+from PolyRenderer import *
 SCR_HEIGHT = 600
 SCR_WIDTH  = 1200
 BG_COLOR   = 'white'
 
 cubeVerticies = array([
-                                   [1, 1, -1],
-                                   [1, -1, -1],
+                                   [ 1,  1, -1],
+                                   [ 1, -1, -1],
                                    [-1, -1, -1],
-                                   [-1, 1, -1],
-                                   [1, 1, 1],
-                                   [1, -1, 1],
-                                   [-1, -1, 1],
-                                   [-1, 1, 1]
+                                   [-1,  1, -1],
+                                   [ 1,  1,  1],
+                                   [ 1, -1,  1],
+                                   [-1, -1,  1],
+                                   [-1,  1,  1]
+])
+
+cubeFaces = array([
+    [1,5,4,0],
+    [2,6,7,3],
+    [0,4,7,3],
+    [3,0,1,2],
+    [4,5,6,7],
+    [1,2,6,5],
 ])
 
 cubeEdges = array([
@@ -35,6 +45,7 @@ cubeEdges = array([
                                [7, 4]
 ])
 
+colors = ["red", "green", "blue", "orange", "purple","black"]
 
 CoordsVertices = array([           [0, 0, 0],
                                    [6, 0, 0],
@@ -69,8 +80,8 @@ def cubeAmimation3(obj,ttime):
 def main():
     app = Application(SCR_HEIGHT,SCR_WIDTH)
     camera = Camera([6, 6, 5], app.getCanvas(), app.getRoot())
-    renderer = Renderer(camera,app.getCanvas(),app.getWidth(),app.getHeight())
-    myobj = GraphicsObject(cubeVerticies,cubeEdges,[0,0,0])
+    renderer = PolyRenderer(camera,app.getCanvas(),app.getWidth(),app.getHeight())
+    myobj = GraphicsObject(cubeVerticies,cubeFaces,[0,0,0],cubeFaces,colors)
     myobj2 = GraphicsObject(CoordsVertices,CoordsEdges,[0,0,0])
 
     myobj.translate([-1,-1,-1])

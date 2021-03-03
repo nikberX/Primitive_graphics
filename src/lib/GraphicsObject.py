@@ -1,11 +1,14 @@
 from numpy import array,c_,ones
 class GraphicsObject:
-    def __init__(self,vertices,edges,worldPos):
+    def __init__(self,vertices,edges,worldPos,polys = None,colors = None):
         self.localVerticies = vertices
         self.verticies = vertices
         self.edges = edges
+        self.faces = edges
+        self.polys = polys
         self.worldPos = worldPos
         self.scale = 1
+        self.colors = colors
         self.update()
 
     def translate(self, pos):

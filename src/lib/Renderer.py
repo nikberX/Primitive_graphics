@@ -20,7 +20,7 @@ class Renderer:
         self.objectList = []
         self.objectLinesList = []
 
-        self.f_proj = CKH_to_CKK_parallel
+        self.f_proj = parallel_proj
 
 
 
@@ -43,11 +43,11 @@ class Renderer:
             print("Failed to register graphicsObj")
 
     def changeProjection(self):
-        if (self.f_proj == CKH_to_CKK_parallel):
-            self.f_proj = CKH_to_CKK_perspective
+        if (self.f_proj == parallel_proj):
+            self.f_proj = perspective_proj
             self.update()
         else:
-            self.f_proj = CKH_to_CKK_parallel
+            self.f_proj = parallel_proj
             self.update()
 
     def update(self):

@@ -1,6 +1,5 @@
 import GraphicsObject
 from numpy import array
-from MathAndProjections import CKM_to_CKH,CKK_to_CKEi,CKH_to_CKK_parallel,CKH_to_CKK_perspective
 
 
 h = 600
