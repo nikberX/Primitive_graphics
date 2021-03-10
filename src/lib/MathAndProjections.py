@@ -1,6 +1,6 @@
 import numpy as np
 
-def CKM_to_CKH(vertex, origin):
+def worldToCamera(vertex, origin): #СКМ в СКН
     rows, cols = vertex.shape
 
     #adds col of ones to right side of matrix

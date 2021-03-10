@@ -43,7 +43,7 @@ class PolyRenderer:
                 plane_coeffs[i] = matrix_to_w_center(plane_coeffs[i], w_center)
 
             Model = graphicsObj.verticies
-            Model, s = CKM_to_CKH(Model, camPos)
+            Model, s = worldToCamera(Model, camPos)
             Model = self.f_proj(Model, s)
             Model = CKK_to_CKEi(Model, 10, self.width / 2, self.height / 2, 200, 200)
 
@@ -84,7 +84,7 @@ class PolyRenderer:
         cPos = self.camera.getPos()
         for obj in self.objectList:
             Model = obj.verticies
-            Model, s = CKM_to_CKH(Model, self.camera.getPos())
+            Model, s = worldToCamera(Model, self.camera.getPos())
             s*=2
             Model = self.f_proj(Model, s)
             Model = CKK_to_CKEi(Model, 10, self.width / 2, self.height / 2, 200, 200)

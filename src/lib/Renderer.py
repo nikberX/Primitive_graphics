@@ -28,7 +28,7 @@ class Renderer:
         if (isinstance(graphicsObj,GraphicsObject)):
             self.objectList.append(graphicsObj)
             Model = graphicsObj.verticies
-            Model, s = CKM_to_CKH(Model, self.camera.getPos())
+            Model, s = worldToCamera(Model, self.camera.getPos())
             s *= 2
             Model = self.f_proj(Model, s)
             Model = CKK_to_CKEi(Model, 10, self.width / 2, self.height / 2, 200, 200)
@@ -54,7 +54,7 @@ class Renderer:
         index_count = 0
         for obj in self.objectList:
             Model = obj.verticies
-            Model, s = CKM_to_CKH(Model, self.camera.getPos())
+            Model, s = worldToCamera(Model, self.camera.getPos())
             s*=2
             Model = self.f_proj(Model, s)
             Model = CKK_to_CKEi(Model, 10, self.width / 2, self.height / 2, 200, 200)
