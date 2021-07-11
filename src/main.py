@@ -82,7 +82,7 @@ def main():
     camera = Camera([6, 6, 5], app.getCanvas(), app.getRoot())
     renderer = PolyRenderer(camera,app.getCanvas(),app.getWidth(),app.getHeight())
     myobj = GraphicsObject(cubeVerticies,cubeFaces,[0,0,0],cubeFaces,colors)
-    myobj2 = GraphicsObject(CoordsVertices,CoordsEdges,[0,0,0])
+    #myobj2 = GraphicsObject(cubeVerticies,cubeEdges,[0,0,0])
 
     myobj.translate([-1,-1,-1])
     animator = Animator()
@@ -96,6 +96,7 @@ def main():
 if __name__ == '__main__':
     main()
 
+#old code with another math
 """
 from graphics import *
 from math import (pi,sin,cos,sqrt,trunc)

@@ -31,7 +31,7 @@ class Renderer:
             Model, s = worldToCamera(Model, self.camera.getPos())
             s *= 2
             Model = self.f_proj(Model, s)
-            Model = CKK_to_CKEi(Model, 10, self.width / 2, self.height / 2, 200, 200)
+            Model = imageToScreen(Model, 10, self.width / 2, self.height / 2, 200, 200)
 
             lines = []
             # все остальные линии
@@ -57,7 +57,7 @@ class Renderer:
             Model, s = worldToCamera(Model, self.camera.getPos())
             s*=2
             Model = self.f_proj(Model, s)
-            Model = CKK_to_CKEi(Model, 10, self.width / 2, self.height / 2, 200, 200)
+            Model = imageToScreen(Model, 10, self.width / 2, self.height / 2, 200, 200)
 
             for i in range(0, obj.edges.shape[0]):
                 self.canvas.coords( self.objectLinesList[index_count][i], Model[obj.edges[i][0], 0],

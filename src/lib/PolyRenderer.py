@@ -45,7 +45,7 @@ class PolyRenderer:
             Model = graphicsObj.verticies
             Model, s = worldToCamera(Model, camPos)
             Model = self.f_proj(Model, s)
-            Model = CKK_to_CKEi(Model, 10, self.width / 2, self.height / 2, 200, 200)
+            Model = imageToScreen(Model, 10, self.width / 2, self.height / 2, 200, 200)
 
             polys = []
 
@@ -87,7 +87,7 @@ class PolyRenderer:
             Model, s = worldToCamera(Model, self.camera.getPos())
             s*=2
             Model = self.f_proj(Model, s)
-            Model = CKK_to_CKEi(Model, 10, self.width / 2, self.height / 2, 200, 200)
+            Model = imageToScreen(Model, 10, self.width / 2, self.height / 2, 200, 200)
 
             for i in range(self.objectPolyList[index_count].size):
                 if (self.objectsPlanesCoefs[index_count][i][0] * cPos[0] + self.objectsPlanesCoefs[index_count][i][1] * cPos[1] +self.objectsPlanesCoefs[index_count][i][2] * cPos[2] + self.objectsPlanesCoefs[index_count][i][3] > 0):

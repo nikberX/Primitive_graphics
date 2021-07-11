@@ -60,7 +60,7 @@ def parallel_proj(vertex, s):
     return vertex[:, 0:2]
 
 
-def CKK_to_CKEi(vertex, pk, xc, yc, xe, ye):
+def imageToScreen(vertex, pk, xc, yc, xe, ye): #СКК в СКЭ (идеал)
     for point in vertex:
         point[0] *= xe / pk
         point[1] *= -ye / pk
@@ -72,7 +72,6 @@ def CKK_to_CKEi(vertex, pk, xc, yc, xe, ye):
 def plane_coef(face, all_edges):
 
     e = np.array([all_edges[face[i]] for i in range(3)])
-
     A = (e[2][1] - e[0][1]) * (e[1][2] - e[0][2]) - (e[1][1] - e[0][1]) * (e[2][2] - e[0][2])
     B = (e[1][0] - e[0][0]) * (e[2][2] - e[0][2]) - (e[2][0] - e[0][0]) * (e[1][2] - e[0][2])
     C = (e[2][0] - e[0][0]) * (e[1][1] - e[0][1]) - (e[1][0] - e[0][0]) * (e[2][1] - e[0][1])
